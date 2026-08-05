@@ -8,6 +8,7 @@ public class Geometry {
         Square.printSquareArea(new Square(6.0));
         Square.printSquarePerimeter(new Square(6.0));
         Rectangle.printRectangleArea(new Rectangle(3.0, 5.0));
+        Rectangle.printRectanglePerimeter(new Rectangle(3.0, 5.0));
     }
 
 }
