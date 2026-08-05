@@ -1,5 +1,7 @@
 package ru.stqa.geometry.figures;
 
+import static java.lang.Math.sqrt;
+
 public class Triangle {
     private double side1;
     private double side2;
@@ -9,5 +11,24 @@ public class Triangle {
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
+    }
+
+    public static void printTriangleArea(Triangle t) {
+        String text = String.format("Площадь треугольника со сторонами %f, %f и %f = %f", t.side1, t.side2, t.side3, t.area());
+        System.out.println(text);
+    }
+
+    public static void printTrianglePerimeter(Triangle t) {
+        String text = String.format("Периметр треугольника со сторонами %f, %f и %f = %f", t.side1, t.side2, t.side3, t.perimeter());
+        System.out.println(text);
+    }
+
+    public double area() {
+        var p = ((this.side1 + this.side2 + this.side3) / 2);
+        return sqrt((p * (p - this.side1) * (p - this.side2) * (p - this.side3)));
+    }
+
+    public double perimeter() {
+        return this.side1 + this.side2 + this.side3;
     }
 }
