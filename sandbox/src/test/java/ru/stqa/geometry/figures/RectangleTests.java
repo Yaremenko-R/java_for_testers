@@ -13,7 +13,7 @@ public class RectangleTests {
     }
 
     @Test
-    void canCalculatePerimeter(){
+    void canCalculatePerimeter() {
         var r = new Rectangle(5.0, 7.0);
         double result = r.perimeter();
         Assertions.assertEquals(24.0, result);

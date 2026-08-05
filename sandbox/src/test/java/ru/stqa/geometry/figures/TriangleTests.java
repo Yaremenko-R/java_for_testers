@@ -9,10 +9,10 @@ public class TriangleTests {
         var t = new Triangle(6.0, 8.0, 10.0);
         double result = t.area();
         Assertions.assertEquals(24.0, result);
-    };
+    }
 
     @Test
-    void canCalculatePerimeter(){
+    void canCalculatePerimeter() {
         var t = new Triangle(6.0, 8.0, 10.0);
         double result = t.perimeter();
         Assertions.assertEquals(24.0, result);
