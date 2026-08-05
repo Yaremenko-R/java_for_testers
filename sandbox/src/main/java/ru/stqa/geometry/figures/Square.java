@@ -1,5 +1,7 @@
+package ru.stqa.geometry.figures;
+
 public class Square {
-    static void printSquareArea(double side) {
+    public static void printSquareArea(double side) {
         System.out.println("Площадь квадрата со стороной " + side + " = " + squareArea(side));
     }
 

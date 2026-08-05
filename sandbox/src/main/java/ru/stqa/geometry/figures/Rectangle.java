@@ -1,5 +1,7 @@
+package ru.stqa.geometry.figures;
+
 public class Rectangle {
-    static void printRectangleArea(double a, double b) {
+    public static void printRectangleArea(double a, double b) {
         System.out.println("Площадь прямоуголника со сторонами " + a + " и " + b + " = " + rectangleArea(a, b));
     }
 
