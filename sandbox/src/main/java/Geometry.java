@@ -1,6 +1,13 @@
 public class Geometry {
     public static void main(String[] args) {
-        var side = 5.0;
-        System.out.println("Площадь квадрата со стороной " + side + " = " + (side * side));
+        printSquareArea(6);
+    }
+
+    static void printSquareArea(double side) {
+        System.out.println("Площадь квадрата со стороной " + side + " = " + squareArea(side));
+    }
+
+    private static double squareArea(double a) {
+        return a * a;
     }
 }
