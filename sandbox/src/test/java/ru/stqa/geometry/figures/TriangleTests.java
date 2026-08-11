@@ -27,4 +27,14 @@ public class TriangleTests {
             //Ok
         }
     }
+
+    @Test
+    void cannotCreateTriangleWithWrongInequality() {
+        try {
+            new Triangle(3.0, 4.0, 8.0);
+            Assertions.fail();
+        } catch (IllegalArgumentException exception) {
+            //Ok
+        }
+    }
 }

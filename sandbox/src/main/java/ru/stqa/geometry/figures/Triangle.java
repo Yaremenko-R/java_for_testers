@@ -14,6 +14,9 @@ public class Triangle {
         if (side1 < 0 || side2 < 0 || side3 < 0) {
             throw new IllegalArgumentException("Triangle side should be non-negative");
         }
+        if (!(side1 + side2 > side3 && side3 + side2 > side1 && side1 + side3 > side2)) {
+            throw new IllegalArgumentException("Triangle with such sides can not be created");
+        }
     }
 
     public static void printTriangleArea(Triangle t) {
