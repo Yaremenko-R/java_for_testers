@@ -1,7 +1,5 @@
 package ru.stqa.geometry.figures;
 
-import java.util.Objects;
-
 public class Square {
 
     private double side;

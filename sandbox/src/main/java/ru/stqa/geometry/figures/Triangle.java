@@ -1,7 +1,5 @@
 package ru.stqa.geometry.figures;
 
-import java.util.Objects;
-
 import static java.lang.Math.sqrt;
 
 public class Triangle {
