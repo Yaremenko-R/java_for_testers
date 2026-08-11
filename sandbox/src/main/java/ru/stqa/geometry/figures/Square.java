@@ -40,6 +40,6 @@ public class Square {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(side);
+        return 1;
     }
 }

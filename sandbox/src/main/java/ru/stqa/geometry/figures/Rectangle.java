@@ -43,6 +43,6 @@ public class Rectangle {
 
     @Override
     public int hashCode() {
-        return Objects.hash(side1, side2);
+        return 1;
     }
 }
