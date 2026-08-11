@@ -11,6 +11,9 @@ public class Triangle {
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
+        if (side1 < 0 || side2 < 0 || side3 < 0) {
+            throw new IllegalArgumentException("Triangle side should be non-negative");
+        }
     }
 
     public static void printTriangleArea(Triangle t) {
