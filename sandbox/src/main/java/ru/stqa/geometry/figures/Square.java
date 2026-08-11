@@ -1,5 +1,7 @@
 package ru.stqa.geometry.figures;
 
+import java.util.Objects;
+
 public class Square {
 
     private double side;
@@ -27,5 +29,17 @@ public class Square {
 
     public double perimeter() {
         return 4 * this.side;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Square square = (Square) o;
+        return Double.compare(side, square.side) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(side);
     }
 }
