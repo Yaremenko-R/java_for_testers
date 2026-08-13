@@ -35,8 +35,8 @@ public class Rectangle {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Rectangle rectangle = (Rectangle) o;
-        return (Double.compare(side1, this.side1) == 0 && Double.compare(side2, this.side2) == 0)
-                || (Double.compare(side1, this.side2) == 0 && Double.compare(side2, this.side1) == 0);
+        return (Double.compare(rectangle.side1, this.side1) == 0 && Double.compare(rectangle.side2, this.side2) == 0)
+                || (Double.compare(rectangle.side2, this.side1) == 0 && Double.compare(rectangle.side1, this.side2) == 0);
     }
 
     @Override
