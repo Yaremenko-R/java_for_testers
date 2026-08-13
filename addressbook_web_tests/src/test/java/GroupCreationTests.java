@@ -15,7 +15,7 @@ public class GroupCreationTests {
     public void setUp() {
         if (driver == null) {
             driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
             Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
             driver.get("http://localhost/addressbook/");
             driver.manage().window().setSize(new Dimension(1918, 1030));
@@ -27,10 +27,9 @@ public class GroupCreationTests {
 
     @Test
     public void canCreateGroup() {
-        //if (!isElementPresent(By.name("new"))) {
-        //    driver.findElement(By.linkText("groups")).click();
-        //}
-        driver.findElement(By.linkText("groups")).click();
+        if (!isElementPresent(By.name("new"))) {
+            driver.findElement(By.linkText("groups")).click();
+        }
         driver.findElement(By.name("new")).click();
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).sendKeys("group name");
@@ -51,10 +50,9 @@ public class GroupCreationTests {
 
     @Test
     public void canCreateGroupWithEmptyName() {
-        //if (!isElementPresent(By.name("new"))) {
-        //    driver.findElement(By.linkText("groups")).click();
-        //}
-        driver.findElement(By.linkText("groups")).click();
+        if (!isElementPresent(By.name("new"))) {
+            driver.findElement(By.linkText("groups")).click();
+        }
         driver.findElement(By.name("new")).click();
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).sendKeys("");
