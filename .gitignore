@@ -19,3 +19,6 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+/addressbook_web_tests/out/test/classes/model
+/addressbook_web_tests/out/test/classes/tests
+/addressbook_web_tests/out/test/classes/manager
