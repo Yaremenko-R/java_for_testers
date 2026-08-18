@@ -16,6 +16,13 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void removeContact() {
+        openMainPage();
+        selectContact();
+        removeSelectedContact();
+        returnToHomePage();
+    }
+
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.firstname());
         type(By.name("middlename"), contact.middlename());
@@ -33,9 +40,25 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void returnToHomePage() {
+    private void openMainPage() {
+        click(By.linkText("home"));
+    }
+
+    private void returnToHomePage() {
         click(By.linkText("home page"));
     }
 
+    public boolean isContactPresent() {
+        openMainPage();
+        return !manager.isElementPresent(By.name("selected[]"));
+    }
+
+    private void removeSelectedContact() {
+        click(By.name("delete"));
+    }
+
+    private void selectContact() {
+        click(By.name("selected[]"));
+    }
 
 }
