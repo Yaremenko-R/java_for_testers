@@ -70,11 +70,6 @@ public class GroupHelper extends HelperBase {
         click(By.name("new"));
     }
 
-    public boolean isGroupPresent() {
-        openGroupsPage();
-        return !manager.isElementPresent(By.name("selected[]"));
-    }
-
     private void removeSelectedGroups() {
         click(By.name("delete"));
     }
