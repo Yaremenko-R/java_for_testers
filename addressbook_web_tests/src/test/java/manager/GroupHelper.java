@@ -79,4 +79,8 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
+    public int getCount() {
+        openGroupsPage();
+        return manager.driver.findElements(By.name("selected[]")).size();
+    }
 }
