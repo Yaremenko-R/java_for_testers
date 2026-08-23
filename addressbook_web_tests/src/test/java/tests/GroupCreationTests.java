@@ -12,11 +12,14 @@ public class GroupCreationTests extends TestBase {
 
     public static List<GroupData> groupProvider() {
         var result = new ArrayList<GroupData>(List.of(
-                new GroupData(),
-                new GroupData().withName("some name"),
-                new GroupData("group Name", "", ""),
-                new GroupData("group Rame", "", ""),
-                new GroupData("group Pame", "", "")));
+                new GroupData("group Pame'", "", "")));
+        for (var name : List.of("", "group name")) {
+            for (var header : List.of("", "group header")) {
+                for (var footer : List.of("", "group footer")) {
+                    result.add(new GroupData(name, header, footer));
+                }
+            }
+        }
         for (int i = 0; i < 7; i++) {
             result.add(new GroupData(randomString(i * 5), randomString(i * 5), randomString(i * 5)));
         }
