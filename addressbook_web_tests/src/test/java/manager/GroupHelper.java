@@ -40,7 +40,6 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(modifiedGroup);
         submitGroupModification();
         returnToGroupPage();
-
     }
 
     private void returnToGroupPage() {
@@ -104,6 +103,6 @@ public class GroupHelper extends HelperBase {
             var id = checkbox.getAttribute("value");
             groups.add(new GroupData().withId(id).withName(name));
         }
-        return  groups;
+        return groups;
     }
 }
