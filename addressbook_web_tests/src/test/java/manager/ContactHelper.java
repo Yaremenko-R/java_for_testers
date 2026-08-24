@@ -26,6 +26,15 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void modifyContact(ContactData contact, ContactData modifiedContact) {
+        openMainPage();
+        selectContact(contact);
+        initContactModification();
+        fillContactForm(modifiedContact);
+        submitContactModification();
+        returnToHomePage();
+    }
+
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.firstname());
         type(By.name("middlename"), contact.middlename());
@@ -39,8 +48,16 @@ public class ContactHelper extends HelperBase {
         click(By.name("submit"));
     }
 
+    private void submitContactModification() {
+        click(By.name("update"));
+    }
+
     private void initContactCreation() {
         click(By.linkText("add new"));
+    }
+
+    private void initContactModification() {
+        click(By.cssSelector("img[alt='Edit']"));
     }
 
     private void openMainPage() {
@@ -81,6 +98,7 @@ public class ContactHelper extends HelperBase {
             checkbox.click();
         }
     }
+
 
     public List<ContactData> getList() {
         var contacts = new ArrayList<ContactData>();
