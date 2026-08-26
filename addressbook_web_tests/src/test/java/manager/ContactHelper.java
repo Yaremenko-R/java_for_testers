@@ -28,8 +28,7 @@ public class ContactHelper extends HelperBase {
 
     public void modifyContact(ContactData contact, ContactData modifiedContact) {
         openMainPage();
-        selectContact(contact);
-        initContactModification();
+        initContactModification(contact);
         fillContactForm(modifiedContact);
         submitContactModification();
         returnToHomePage();
@@ -56,8 +55,8 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    private void initContactModification() {
-        click(By.cssSelector("img[alt='Edit']"));
+    public void initContactModification(ContactData contact) {
+        click(By.cssSelector("a[href^=\"edit.php?id=" + contact.id()));
     }
 
     private void openMainPage() {
@@ -99,7 +98,6 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-
     public List<ContactData> getList() {
         openMainPage();
         var contacts = new ArrayList<ContactData>();
@@ -114,5 +112,4 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
-
 }
