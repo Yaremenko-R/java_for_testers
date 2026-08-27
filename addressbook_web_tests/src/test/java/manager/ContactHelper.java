@@ -56,7 +56,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void initContactModification(ContactData contact) {
-        click(By.cssSelector("a[href^=\"edit.php?id=" + contact.id()));
+        click(By.cssSelector("a[href^=\"edit.php?id=" + contact.id() + "\"]"));
     }
 
     private void openMainPage() {
