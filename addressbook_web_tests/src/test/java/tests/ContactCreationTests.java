@@ -1,5 +1,6 @@
 package tests;
 
+import common.CommonFunctions;
 import model.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,12 +29,12 @@ public class ContactCreationTests extends TestBase {
         }
         for (int i = 0; i < 7; i++) {
             result.add(new ContactData()
-                    .withFirstname(randomString(i * 5))
-                    .withMiddlename(randomString(i * 5))
-                    .withLastname(randomString(i * 5))
-                    .withAddress(randomString(i * 5))
+                    .withFirstname(CommonFunctions.randomString(i * 5))
+                    .withMiddlename(CommonFunctions.randomString(i * 5))
+                    .withLastname(CommonFunctions.randomString(i * 5))
+                    .withAddress(CommonFunctions.randomString(i * 5))
                     .withMobile("+7(495)577-05-13")
-                    .withEmail(randomString(i * 5) + "@m.ru"));
+                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru"));
         }
         return result;
     }
