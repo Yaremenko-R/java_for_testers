@@ -42,11 +42,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contact.address());
         type(By.name("mobile"), contact.mobile());
         type(By.name("email"), contact.email());
-        attach(By.name("photo"), contact.photo());
-    }
-
-    private void attach(By locator, String file) {
-        manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
+        //attach(By.name("photo"), contact.photo());
     }
 
     private void submitContactCreation() {
