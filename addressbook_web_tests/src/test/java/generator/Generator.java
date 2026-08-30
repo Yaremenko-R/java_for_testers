@@ -51,7 +51,7 @@ public class Generator {
 
     private Object generateGroups() {
         var result = new ArrayList<GroupData>();
-        for (int i = 0; count < 7; i++) {
+        for (int i = 0; i < count; i++) {
             result.add(new GroupData()
                     .withName(CommonFunctions.randomString(i * 5))
                     .withHeader(CommonFunctions.randomString(i * 5))
