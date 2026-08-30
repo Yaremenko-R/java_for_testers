@@ -3,6 +3,7 @@ package generator;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import common.CommonFunctions;
 import model.GroupData;
 
@@ -66,6 +67,7 @@ public class Generator {
     private void save(Object data) throws IOException {
         if ("json".equals(format)) {
             ObjectMapper mapper = new ObjectMapper();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
             mapper.writeValue(new File(output), data);
         } else {
             throw new IllegalArgumentException("Неизвестный формат данных " + format);
