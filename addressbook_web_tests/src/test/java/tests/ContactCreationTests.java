@@ -23,7 +23,9 @@ public class ContactCreationTests extends TestBase {
                             .withLastname(lastname)
                             .withAddress("Москва")
                             .withMobile("+7(495)577-05-13")
-                            .withEmail("q@m.ru"));
+                            .withEmail("q@m.ru")
+                            .withPhoto("src/test/resources/images/avatar.png"));
+
                 }
             }
         }
@@ -34,7 +36,8 @@ public class ContactCreationTests extends TestBase {
                     .withLastname(CommonFunctions.randomString(i * 5))
                     .withAddress(CommonFunctions.randomString(i * 5))
                     .withMobile("+7(495)577-05-13")
-                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru"));
+                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru")
+                    .withPhoto("src/test/resources/images/avatar.png"));
         }
         return result;
     }
