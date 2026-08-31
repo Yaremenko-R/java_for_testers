@@ -24,7 +24,7 @@ public class ContactCreationTests extends TestBase {
                             .withAddress("Москва")
                             .withMobile("+7(495)577-05-13")
                             .withEmail("q@m.ru")
-                            .withPhoto(randomFile("src/test/resources/images")));
+                            .withPhoto(CommonFunctions.randomFile("src/test/resources/images")));
 
                 }
             }
@@ -37,7 +37,7 @@ public class ContactCreationTests extends TestBase {
                     .withAddress(CommonFunctions.randomString(i * 5))
                     .withMobile("+7(495)577-05-13")
                     .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru")
-                    .withPhoto(randomFile("src/test/resources/images")));
+                    .withPhoto(CommonFunctions.randomFile("src/test/resources/images")));
         }
         return result;
     }

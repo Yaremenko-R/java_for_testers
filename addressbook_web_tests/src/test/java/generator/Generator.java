@@ -5,6 +5,7 @@ import com.beust.jcommander.Parameter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import common.CommonFunctions;
+import model.ContactData;
 import model.GroupData;
 
 import java.io.File;
@@ -61,7 +62,18 @@ public class Generator {
     }
 
     private Object generateContacts() {
-        return null;
+        var result = new ArrayList<ContactData>();
+        for (int i = 0; i < count; i++) {
+            result.add(new ContactData()
+                    .withFirstname(CommonFunctions.randomString(i * 5))
+                    .withMiddlename(CommonFunctions.randomString(i * 5))
+                    .withLastname(CommonFunctions.randomString(i * 5))
+                    .withAddress(CommonFunctions.randomString(i * 5))
+                    .withMobile("+7(495)577-05-13")
+                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru")
+                    .withPhoto(CommonFunctions.randomFile("src/test/resources/images")));
+        }
+        return result;
     }
 
     private void save(Object data) throws IOException {

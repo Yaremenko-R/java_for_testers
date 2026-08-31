@@ -1,0 +1,28 @@
+[ {
+  "id" : "",
+  "firstname" : "",
+  "middlename" : "",
+  "lastname" : "",
+  "address" : "",
+  "mobile" : "+7(495)577-05-13",
+  "email" : "@m.ru",
+  "photo" : "src\\test\\resources\\images\\boroda.png"
+}, {
+  "id" : "",
+  "firstname" : "kikrz",
+  "middlename" : "kxixz",
+  "lastname" : "fzjco",
+  "address" : "bcqju",
+  "mobile" : "+7(495)577-05-13",
+  "email" : "quvmm@m.ru",
+  "photo" : "src\\test\\resources\\images\\avatar.png"
+}, {
+  "id" : "",
+  "firstname" : "xfsxlnzeum",
+  "middlename" : "cctmgdaroi",
+  "lastname" : "eocxxqswcq",
+  "address" : "ghkvtjlljl",
+  "mobile" : "+7(495)577-05-13",
+  "email" : "oxyjhvvhwj@m.ru",
+  "photo" : "src\\test\\resources\\images\\sql.png"
+} ]
