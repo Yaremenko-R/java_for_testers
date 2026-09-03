@@ -19,7 +19,7 @@ public class TestBase {
         if (app == null) {
             app = new ApplicationManager();
         }
-        app.init(System.getProperty("browser", "firefox"), properties);
+        app.init(System.getProperty("browser", "chrome"), properties);
     }
 
 }
