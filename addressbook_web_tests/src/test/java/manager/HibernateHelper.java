@@ -38,6 +38,14 @@ public class HibernateHelper extends HelperBase {
         return new GroupData("" + record.id, record.name, record.header, record.footer);
     }
 
+    private static GroupRecord groupConvert(GroupData record) {
+        var id = record.id();
+        if ("".equals(id)) {
+            id = "0";
+        }
+        return new GroupRecord(Integer.parseInt(id), record.name(), record.header(), record.footer());
+    }
+
     public List<GroupData> getGroupList() {
         return convertGroupList(sessionFactory.fromSession(session -> {
             return session.createQuery("from GroupRecord", GroupRecord.class).list();
@@ -62,4 +70,17 @@ public class HibernateHelper extends HelperBase {
         }));
     }
 
+    public long getGroupCount() {
+        return (sessionFactory.fromSession(session -> {
+            return session.createQuery("select count (*) from GroupRecord", Long.class).getSingleResult();
+        }));
+    }
+
+    public void createGroup(GroupData groupData) {
+        sessionFactory.inSession(session -> {
+            session.getTransaction().begin();
+            session.persist(groupConvert(groupData));
+            session.getTransaction().commit();
+        });
+    }
 }
