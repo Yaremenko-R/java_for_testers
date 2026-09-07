@@ -34,4 +34,18 @@ public class ContactRecord {
     @Column(name = "photo")
     public String photo;
 
+    public ContactRecord() {
+    }
+
+    public ContactRecord(int id, String firstname, String middlename, String lastname, String address,
+                         String mobile, String email, String photo) {
+        this.id = id;
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.address = address;
+        this.mobile = mobile;
+        this.email = email;
+        this.photo = photo;
+    }
 }
