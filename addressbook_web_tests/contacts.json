@@ -5,8 +5,7 @@
   "lastname" : "",
   "address" : "",
   "mobile" : "+7(495)577-05-13",
-  "email" : "@m.ru",
-  "photo" : "src\\test\\resources\\images\\error.png"
+  "email" : "@m.ru"
 }, {
   "id" : "",
   "firstname" : "ehlwf",
@@ -14,8 +13,7 @@
   "lastname" : "ospsj",
   "address" : "blijr",
   "mobile" : "+7(495)577-05-13",
-  "email" : "tqzmq@m.ru",
-  "photo" : "src\\test\\resources\\images\\boroda.png"
+  "email" : "tqzmq@m.ru"
 }, {
   "id" : "",
   "firstname" : "areoquceeo",
@@ -23,8 +21,7 @@
   "lastname" : "dlqiohivsv",
   "address" : "djasstsuba",
   "mobile" : "+7(495)577-05-13",
-  "email" : "ydkdptcmtq@m.ru",
-  "photo" : "src\\test\\resources\\images\\chat.png"
+  "email" : "ydkdptcmtq@m.ru"
 }, {
   "id" : "",
   "firstname" : "bjuinzorblipbet",
@@ -32,6 +29,5 @@
   "lastname" : "wrbsldilngeqtsg",
   "address" : "hkolauuoprfsakx",
   "mobile" : "+7(495)577-05-13",
-  "email" : "qvyfrytxdizxndl@m.ru",
-  "photo" : "src\\test\\resources\\images\\boroda.png"
+  "email" : "qvyfrytxdizxndl@m.ru"
 } ]

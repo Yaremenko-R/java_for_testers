@@ -73,8 +73,7 @@ public class Generator {
                     .withLastname(CommonFunctions.randomString(i * 5))
                     .withAddress(CommonFunctions.randomString(i * 5))
                     .withMobile("+7(495)577-05-13")
-                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru")
-                    .withPhoto(CommonFunctions.randomFile("src/test/resources/images")));
+                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru"));
         }
         return result;
     }

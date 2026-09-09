@@ -31,14 +31,11 @@ public class ContactRecord {
     @Column(name = "email")
     public String email;
 
-    @Column(name = "photo")
-    public String photo;
-
     public ContactRecord() {
     }
 
     public ContactRecord(int id, String firstname, String middlename, String lastname, String address,
-                         String mobile, String email, String photo) {
+                         String mobile, String email) {
         this.id = id;
         this.firstname = firstname;
         this.middlename = middlename;
@@ -46,6 +43,5 @@ public class ContactRecord {
         this.address = address;
         this.mobile = mobile;
         this.email = email;
-        this.photo = photo;
     }
 }
