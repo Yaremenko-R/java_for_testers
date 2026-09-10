@@ -1,6 +1,7 @@
 package tests;
 
 import model.ContactData;
+import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,30 @@ public class ContactRemovalTests extends TestBase {
         var expectedList = new ArrayList<>(oldContacts);
         expectedList.remove(index);
         Assertions.assertEquals(newContacts, expectedList);
+    }
+
+    @Test
+    public void canRemoveContactFromGroup() {
+        if (app.hbm().getContactCount() == 0) {
+            app.hbm().createContact(
+                    new ContactData().withFirstname("Ivan").withMiddlename("Ivanych")
+                            .withLastname("Ivanov").withAddress("Москва").withMobile("+7(495)577-05-13").withEmail("q@m.ru"));
+        }
+        if (app.hbm().getGroupCount() == 0) {
+            app.hbm().createGroup(new GroupData().withName("group name").withHeader("group header").withFooter("group footer"));
+        }
+
+        var groupToUse = app.hbm().getGroupList().get(0);
+        var contactToUse = app.hbm().getContactList().get(0);
+
+        var currentContactGroups = app.hbm().getGroupsInContact(contactToUse);
+        if (!currentContactGroups.contains(groupToUse)) {
+            app.contacts().addContactToGroup(contactToUse, groupToUse);
+        }
+
+        app.contacts().removeContactFromGroup(contactToUse, groupToUse);
+        var groupsAfterRemove = app.hbm().getGroupsInContact(contactToUse);
+        Assertions.assertFalse(groupsAfterRemove.contains(groupToUse));
     }
 
     @Test

@@ -48,6 +48,25 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void addContactToGroup(ContactData contact, GroupData group) {
+        openMainPage();
+        selectContact(contact);
+        addToGroupOnMainPage(group);
+        openMainPage();
+    }
+
+    private void addToGroupOnMainPage(GroupData group) {
+        new Select(manager.driver.findElement(By.name("to_group"))).selectByVisibleText(group.name());
+        click(By.name("add"));
+    }
+
+    public void removeContactFromGroup(ContactData contact, GroupData group) {
+        openMainPage();
+        new Select(manager.driver.findElement(By.name("group"))).selectByVisibleText(group.name());
+        selectContact(contact);
+        click(By.name("remove"));
+    }
+
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.firstname());
         type(By.name("middlename"), contact.middlename());
@@ -126,4 +145,5 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
+
 }
