@@ -14,6 +14,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Generator {
 
@@ -53,29 +56,25 @@ public class Generator {
         }
     }
 
+    private Object generateData (Supplier<Object> dataSupplier) {
+        return Stream.generate(dataSupplier).limit(count).collect(Collectors.toList());
+    }
+
     private Object generateGroups() {
-        var result = new ArrayList<GroupData>();
-        for (int i = 0; i < count; i++) {
-            result.add(new GroupData()
-                    .withName(CommonFunctions.randomString(i * 5))
-                    .withHeader(CommonFunctions.randomString(i * 5))
-                    .withFooter(CommonFunctions.randomString(i * 5)));
-        }
-        return result;
+        return generateData(() -> new GroupData()
+                .withName(CommonFunctions.randomString(5))
+                .withHeader(CommonFunctions.randomString(5))
+                .withFooter(CommonFunctions.randomString(5)));
     }
 
     private Object generateContacts() {
-        var result = new ArrayList<ContactData>();
-        for (int i = 0; i < count; i++) {
-            result.add(new ContactData()
-                    .withFirstname(CommonFunctions.randomString(i * 5))
-                    .withMiddlename(CommonFunctions.randomString(i * 5))
-                    .withLastname(CommonFunctions.randomString(i * 5))
-                    .withAddress(CommonFunctions.randomString(i * 5))
+        return generateData(() -> new ContactData()
+                    .withFirstname(CommonFunctions.randomString(5))
+                    .withMiddlename(CommonFunctions.randomString(5))
+                    .withLastname(CommonFunctions.randomString(5))
+                    .withAddress(CommonFunctions.randomString(5))
                     .withMobile("+7(495)577-05-13")
-                    .withEmail(CommonFunctions.randomString(i * 5) + "@m.ru"));
-        }
-        return result;
+                    .withEmail(CommonFunctions.randomString(5) + "@m.ru"));
     }
 
     private void save(Object data) throws IOException {
