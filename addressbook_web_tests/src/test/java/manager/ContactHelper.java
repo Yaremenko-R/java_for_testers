@@ -5,8 +5,8 @@ import model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ContactHelper extends HelperBase {
 
@@ -133,17 +133,17 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getList() {
         openMainPage();
-        var contacts = new ArrayList<ContactData>();
         var elements = manager.driver.findElements(By.name("entry"));
-        for (var element : elements) {
-            var cells = element.findElements(By.tagName("td"));
-            var checkbox = element.findElement(By.name("selected[]"));
-            var id = checkbox.getAttribute("value");
-            var firstname = cells.get(2).getText();
-            var lastname = cells.get(1).getText();
-            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-        }
-        return contacts;
+        return elements.stream()
+                .map( element -> {
+                    var cells = element.findElements(By.tagName("td"));
+                    var checkbox = element.findElement(By.name("selected[]"));
+                    var id = checkbox.getAttribute("value");
+                    var firstname = cells.get(2).getText();
+                    var lastname = cells.get(1).getText();
+                    return new ContactData().withId(id).withFirstname(firstname).withLastname(lastname);
+                })
+                .collect(Collectors.toList());
     }
 
 }
