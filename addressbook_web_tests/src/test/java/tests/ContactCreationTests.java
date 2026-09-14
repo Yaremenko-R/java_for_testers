@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -36,15 +37,11 @@ public class ContactCreationTests extends TestBase {
         var oldContacts = app.hbm().getContactList();
         app.contacts().createContact(contact);
         var newContacts = app.hbm().getContactList();
-        Comparator<ContactData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
-        };
-        newContacts.sort(compareById);
-        var maxId = newContacts.get(newContacts.size() - 1).id();
+        var extraGroups = newContacts.stream().filter(g -> ! oldContacts.contains(g)).toList();
+        var newId = extraGroups.get(0).id();
         var expectedList = new ArrayList<>(oldContacts);
-        expectedList.add(contact.withId(maxId));
-        expectedList.sort(compareById);
-        Assertions.assertEquals(newContacts, expectedList);
+        expectedList.add(contact.withId(newId));
+        Assertions.assertEquals(Set.copyOf(newContacts), Set.copyOf(expectedList));
     }
 
     @Test
