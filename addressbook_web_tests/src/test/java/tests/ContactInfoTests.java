@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class ContactInfoTests extends TestBase {
 
     @Test
-    void testPhones() {
+    void testContactInfoOnMainPage() {
         if (app.hbm().getContactCount() == 0) {
             app.hbm().createContact(
                     new ContactData().withFirstname("Ivan").withMiddlename("Ivanych")
@@ -18,12 +18,13 @@ public class ContactInfoTests extends TestBase {
         }
         var contacts = app.hbm().getContactList();
         var expected = contacts.stream().collect(Collectors.toMap(ContactData::id, contact ->
-                Stream.of(contact.home(), contact.mobile(), contact.work())
+                Stream.of(contact.home(), contact.mobile(), contact.work(), contact.email()
+                                , contact.email2(), contact.email3(), contact.address())
                         .filter(s -> s != null && !"".equals(s))
                         .collect(Collectors.joining("\n"))
         ));
-        var phones = app.contacts().getPhones();
-        Assertions.assertEquals(expected, phones);
+        var allInOne = app.contacts().getAllContactInfo();
+        Assertions.assertEquals(expected, allInOne);
     }
 
 }

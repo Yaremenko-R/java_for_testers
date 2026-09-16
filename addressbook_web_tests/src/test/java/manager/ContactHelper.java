@@ -163,4 +163,39 @@ public class ContactHelper extends HelperBase {
         }
         return result;
     }
+
+    public Map<String, String> getEmails() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var emails = row.findElements(By.tagName("td")).get(4).getText();
+            result.put(id, emails);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAddresses() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var addresses = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id, addresses);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAllContactInfo() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var phones = row.findElements(By.tagName("td")).get(5).getText();
+            var emails = row.findElements(By.tagName("td")).get(4).getText();
+            var addresses = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id, phones + "\n" + emails + "\n" + addresses);
+        }
+        return result;
+    }
 }
