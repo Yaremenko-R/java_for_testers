@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class ContactCreationTests extends TestBase {
 
     public static List<ContactData> contactProvider() throws IOException {
@@ -35,7 +32,7 @@ public class ContactCreationTests extends TestBase {
         var oldContacts = app.hbm().getContactList();
         app.contacts().createContact(contact);
         var newContacts = app.hbm().getContactList();
-        var extraGroups = newContacts.stream().filter(g -> ! oldContacts.contains(g)).toList();
+        var extraGroups = newContacts.stream().filter(g -> !oldContacts.contains(g)).toList();
         var newId = extraGroups.get(0).id();
         var expectedList = new ArrayList<>(oldContacts);
         expectedList.add(contact.withId(newId));
@@ -63,18 +60,40 @@ public class ContactCreationTests extends TestBase {
     }
 
     @Test
-    public void canAddContactToGroup() {
-        if (app.hbm().getContactCount() == 0) {
-            app.hbm().createContact(
-                    new ContactData().withFirstname("Ivan").withMiddlename("Ivanych")
-                            .withLastname("Ivanov").withAddress("Москва").withMobile("+7(495)577-05-13").withEmail("q@m.ru"));
-        }
-        if (app.hbm().getGroupCount() == 0) {
+    void canAddContactToGroup() {
+        var allContacts = app.hbm().getContactList();
+        var allGroups = app.hbm().getGroupList();
+
+        if (allGroups.isEmpty()) {
             app.hbm().createGroup(new GroupData().withName("group name").withHeader("group header").withFooter("group footer"));
+            allGroups = app.hbm().getGroupList();
         }
 
-        var contactToUse = app.hbm().getContactList().get(0);
-        var groupToUse = app.hbm().getGroupList().get(0);
+        if (allContacts.isEmpty()) {
+            app.hbm().createContact(new ContactData().withFirstname("Ivan").withMiddlename("Ivanych").withLastname("Ivanov")
+                    .withAddress("Москва").withMobile("+7(495)577-05-13").withEmail("q@m.ru"));
+            allContacts = app.hbm().getContactList();
+        }
+
+        ContactData contactToUse = null;
+        GroupData groupToUse = null;
+
+        for (var group : allGroups) {
+            var contactsInThisGroup = app.hbm().getContactsInGroup(group);
+            for (var contact : allContacts) {
+                if (!contactsInThisGroup.contains(contact)) {
+                    contactToUse = contact;
+                    groupToUse = group;
+                    break;
+                } else {
+                    contactToUse = new ContactData().withFirstname("Petr").withMiddlename("Petrovich").withLastname("Petrov")
+                            .withAddress("Углич").withMobile("+7(495)577-05-15").withEmail("p@m.ru");
+                    app.hbm().createContact(contactToUse);
+                    groupToUse = allGroups.get(0);
+                }
+            }
+        }
+
         var contactsInGroupBefore = app.hbm().getContactsInGroup(groupToUse);
         app.contacts().addContactToGroup(contactToUse, groupToUse);
         var contactsInGroupAfter = app.hbm().getContactsInGroup(groupToUse);
