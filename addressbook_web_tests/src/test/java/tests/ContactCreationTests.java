@@ -32,8 +32,8 @@ public class ContactCreationTests extends TestBase {
         var oldContacts = app.hbm().getContactList();
         app.contacts().createContact(contact);
         var newContacts = app.hbm().getContactList();
-        var extraGroups = newContacts.stream().filter(g -> !oldContacts.contains(g)).toList();
-        var newId = extraGroups.get(0).id();
+        var extraContacts = newContacts.stream().filter(g -> !oldContacts.contains(g)).toList();
+        var newId = extraContacts.get(0).id();
         var expectedList = new ArrayList<>(oldContacts);
         expectedList.add(contact.withId(newId));
         Assertions.assertEquals(Set.copyOf(newContacts), Set.copyOf(expectedList));
@@ -90,6 +90,7 @@ public class ContactCreationTests extends TestBase {
                             .withAddress("Углич").withMobile("+7(495)577-05-15").withEmail("p@m.ru");
                     app.hbm().createContact(contactToUse);
                     groupToUse = allGroups.get(0);
+                    allContacts = app.hbm().getContactList();
                 }
             }
         }
