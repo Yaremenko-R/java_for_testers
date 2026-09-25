@@ -89,8 +89,11 @@ public class ContactCreationTests extends TestBase {
                     contactToUse = new ContactData().withFirstname("Petr").withMiddlename("Petrovich").withLastname("Petrov")
                             .withAddress("Углич").withMobile("+7(495)577-05-15").withEmail("p@m.ru");
                     app.hbm().createContact(contactToUse);
-                    groupToUse = allGroups.get(0);
                     allContacts = app.hbm().getContactList();
+                    contactToUse = allContacts.stream()
+                            .filter(c -> c.email().equals("p@m.ru"))
+                            .findFirst().orElseThrow();
+                    groupToUse = allGroups.get(0);
                 }
             }
         }
