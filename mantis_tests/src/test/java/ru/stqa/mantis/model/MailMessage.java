@@ -11,6 +11,6 @@ public record MailMessage(String from, String content) {
     }
 
     public MailMessage withContent(String content) {
-        return new MailMessage(content, this.from);
+        return new MailMessage(this.from, content);
     }
 }

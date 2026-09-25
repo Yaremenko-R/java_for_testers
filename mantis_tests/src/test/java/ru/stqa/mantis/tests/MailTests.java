@@ -22,7 +22,7 @@ public class MailTests extends TestBase {
 
     @Test
     void canExtractUrl() {
-        var messages = app.mail().receive("user1@localhost", "password", Duration.ofSeconds(20));
+        var messages = app.mail().receive("user1@localhost", "password", Duration.ofSeconds(10));
         var text = messages.get(0).content();
         var pattern = Pattern.compile("http://\\S*");
         var matcher = pattern.matcher(text);
