@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * UserResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2026-09-30T22:49:42.350+03:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2026-10-02T00:44:17.734+03:00")
 public class UserResponse {
   @SerializedName("id")
   private Long id = null;
